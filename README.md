@@ -3,4 +3,4 @@ random projects
 
 https://thesoundfromthesky.github.io/project1/
 
-check it
+simple calculator
