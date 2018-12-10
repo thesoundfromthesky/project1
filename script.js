@@ -11,6 +11,8 @@ function setInput(_self){
     if(_self.value !== undefined)
         self = _self.value;
     input.value += self;
+    if (isNaN(input.value))
+    input.value = null;
 }
 
 function clearInput(){
@@ -60,6 +62,8 @@ document.body.addEventListener("keydown", (event) =>{
     event.key === '*' || event.key === '/')
         this.calculate(event.key);
     else if('0' <= event.key && event.key <= '9' )
+        this.setInput(event.key);
+    else if('.' === event.key)
         this.setInput(event.key);
     }
 })
