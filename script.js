@@ -54,10 +54,13 @@ function calculate(_operator){
 }
 
 document.body.addEventListener("keydown", (event) =>{
+    let element = document.activeElement;
+    if(element.id !== "input"){
     if(event.key === '+' || event.key === '-' || 
     event.key === '*' || event.key === '/')
         this.calculate(event.key);
     else if('0' <= event.key && event.key <= '9' )
         this.setInput(event.key);
+    }
 })
 
