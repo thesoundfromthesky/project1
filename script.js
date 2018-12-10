@@ -10,9 +10,11 @@ function setInput(_self){
     let input = getSelector("#input");
     if(_self.value !== undefined)
         self = _self.value;
+    let temp = input.value;
+    temp += self;
+    if (isNaN(temp))
+        return;        
     input.value += self;
-    if (isNaN(input.value))
-    input.value = null;
 }
 
 function clearInput(){
@@ -26,8 +28,17 @@ function calculate(_operator){
     let operator = _operator;
     let result = getSelector("#result");
     let input = getSelector("#input");
+    
+    if (isNaN(input.value)) {
+    return;
+    }
+    
     let resultNum = Number.parseFloat(result.value);
     let inputNum = Number.parseFloat(input.value);
+    
+    if(isNaN(resultNum))
+        resultNum = 0;
+    
     if (isNaN(resultNum))
         resultNum = 0;
     if (isNaN(inputNum))
