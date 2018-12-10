@@ -8,7 +8,7 @@ function getSelector(_selector)
 function setInput(_self){
     let self = _self;
     let input = getSelector("#input");
-    if(_self.value !== undefined)
+    if (_self.value !== undefined)
         self = _self.value;
     let temp = input.value;
     temp += self;
@@ -28,21 +28,41 @@ function calculate(_operator){
     let operator = _operator;
     let result = getSelector("#result");
     let input = getSelector("#input");
-    
-    if (isNaN(input.value)) {
-    return;
+
+    if (Number.isNaN(input.value))
+        return;
+
+    let inputPointIndex = input.value.indexOf('.');
+    let inputDigit = 0;
+    if(-1 < inputPointIndex)
+    {
+        let inputLen = input.value.length;
+        inputDigit = inputLen - inputPointIndex - 1;
+    }
+
+    let resultPointIndex = result.value.indexOf('.');
+    let resultDigit = 0;
+    if(-1 < resultPointIndex)
+    {
+        let resultLen = result.value.length;
+        resultDigit = resultLen - resultPointIndex - 1;
     }
     
-    let resultNum = Number.parseFloat(result.value);
-    let inputNum = Number.parseFloat(input.value);
-    
-    if(isNaN(resultNum))
+    let digit = resultDigit;
+    if(resultDigit < inputDigit)
+        digit = inputDigit;
+    let decimal = 10 ** digit;
+    if (-1 < inputPointIndex || -1 < resultPointIndex) {
+        result.value *= decimal;
+        input.value *= decimal;
+    }
+
+    let resultNum = Number.parseInt(result.value);
+    let inputNum = Number.parseInt(input.value);
+
+    if (Number.isNaN(resultNum))
         resultNum = 0;
-    
-    if (isNaN(resultNum))
-        resultNum = 0;
-    if (isNaN(inputNum))
-        inputNum = 0;
+
     if (_operator.value !== undefined)
         operator = _operator.value;
 
@@ -62,20 +82,29 @@ function calculate(_operator){
         default:
             return;
     }
-    result.value = resultNum;
+    if (-1 < inputPointIndex || -1 < resultPointIndex)
+        result.value = resultNum / decimal;
+    else
+        result.value = resultNum;
     input.value = null;
 }
 
-document.body.addEventListener("keydown", (event) =>{
+document.body.addEventListener("keydown", (event) => {
     let element = document.activeElement;
-    if(element.id !== "input"){
-    if(event.key === '+' || event.key === '-' || 
-    event.key === '*' || event.key === '/')
-        this.calculate(event.key);
-    else if('0' <= event.key && event.key <= '9' )
-        this.setInput(event.key);
-    else if('.' === event.key)
-        this.setInput(event.key);
+    if (element.id !== "input") {
+        if (event.key === '+' || event.key === '-' ||
+            event.key === '*' || event.key === '/')
+            this.calculate(event.key);
+        else if ('0' <= event.key && event.key <= '9')
+            this.setInput(event.key);
+        else if (event.key === '.')
+            this.setInput(event.key);
+        else if (event.key === 'Backspace') {
+            let input = getSelector("#input");
+            let len = input.value.length;
+            if(0 < len)
+                input.value = input.value.substring(0, len - 1);
+        }
     }
-})
 
+})
