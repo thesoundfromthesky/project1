@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="Author" content="고기상추밥">
-    <meta name="Keywords" content="계산기, ${/Calculator/i}">
-    <meta name="Description" content="계산기 입니다. ${/This is a calculator./i}">
+    <meta name="Keywords" content= "계산기">
+    <meta name="Description" content="계산기 입니다.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="style.css" rel="stylesheet" type="text/css">
     <title>계산기</title>
@@ -21,7 +21,7 @@
             <tr>                
                 <th colspan="4">
                     <label for="input">입력:</label>
-                    <input id="input" type="number" autofocus>
+                    <input id="input" type="text" autofocus>
                 </th>
             </tr>
         </thead>
@@ -53,7 +53,7 @@
             <tr>
                 <td><button id="btnC" value="C" onclick="clearInput()">C</button></td>
                 <td><button id="btn0" value="0" onclick="setInput(this)">0</button></td>
-                <td><button id="btn." value=".">_</button></td>
+                <td><button id="btn." value="." onclick="setInput(this)">.</button></td>
                 <td><button id="btn+" value="+" onclick="calculate(this)">+</button></td>
             </tr>
         </tfoot>
