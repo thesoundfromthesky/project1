@@ -29,7 +29,7 @@ function calculate(_operator){
     let result = getSelector("#result");
     let input = getSelector("#input");
 
-    if (Number.isNaN(input.value))
+    if (Number.isNaN(Number(input.value)))
         return;
 
     let inputPointIndex = input.value.indexOf('.');
