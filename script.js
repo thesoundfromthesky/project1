@@ -53,8 +53,8 @@ function calculate(_operator){
         digit = inputDigit;
     let decimal = 10 ** digit;
     if (-1 < inputPointIndex || -1 < resultPointIndex) {
-        result.value *= decimal;
-        input.value *= decimal;
+        result.value = (result.value * decimal).toFixed();
+        input.value = (input.value * decimal).toFixed();
     }
 
     let resultNum = Number.parseInt(result.value);
