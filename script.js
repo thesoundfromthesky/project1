@@ -99,7 +99,7 @@ document.body.addEventListener("keydown", (event) => {
             this.setInput(event.key);
         else if (event.key === '.')
             this.setInput(event.key);
-        else if (event.key === 'Backspace') {
+        else if (event.key === 'Delete') {
             let input = getSelector("#input");
             let len = input.value.length;
             if(0 < len)
