@@ -1,0 +1,44 @@
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 0.9rem;
+  margin: 0px;
+}
+a {
+  text-decoration: none;
+  color: white;
+}
+header,
+footer,
+aside {
+  padding: 15px;
+  color: white;
+  background-color: brown;
+}
+aside {
+  background-color: olivedrab;
+  color: white;
+}
+nav ul {
+  padding: 10px;
+  margin: 0px;
+  background-color: tomato;
+  color: white;
+}
+nav ul li {
+  display: inline;
+  margin: 15px;
+}
+section {
+  margin: 5px;
+  padding: 50px;
+  background-color: burlywood;
+}
+article {
+  margin: 5px;
+  padding: 15px;
+  background-color: white;
+}
+
+canvas {
+  border: 1px solid gray;
+}

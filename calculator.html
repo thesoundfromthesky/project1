@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="index.css" rel="stylesheet" />
+    <link rel="stylesheet" href="calculator.css" />
+    <meta name="Author" content="고기상추밥" />
+    <meta name="Keywords" content="Project1" />
+    <meta name="Description" content="Main page" />
+    <title>Project1</title>
+  </head>
+  <body>
+    <header>
+      <h1>This is Header</h1>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, sit.
+      </p>
+    </header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li>
+          <a href="calculator.html" style="color:aquamarine">Calculator</a>
+        </li>
+        <li>This is Nav 3</li>
+        <li>This is Nav 4</li>
+        <li>This is Nav 5</li>
+      </ul>
+    </nav>
+    <section>
+      <table>
+        <thead>
+          <tr>
+            <th colspan="4">
+              <label for="result">결과:</label>
+              <input id="result" type="number" readonly />
+            </th>
+          </tr>
+          <tr>
+            <th colspan="4">
+              <label for="input">입력:</label>
+              <input id="input" type="text" autofocus />
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <button id="btn7" value="7" onclick="setInput(this)">7</button>
+            </td>
+            <td>
+              <button id="btn8" value="8" onclick="setInput(this)">8</button>
+            </td>
+            <td>
+              <button id="btn9" value="9" onclick="setInput(this)">9</button>
+            </td>
+            <td>
+              <button id="btn/" value="/" onclick="calculate(this)">/</button>
+            </td>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr>
+            <td>
+              <button id="btn4" value="4" onclick="setInput(this)">4</button>
+            </td>
+            <td>
+              <button id="btn5" value="5" onclick="setInput(this)">5</button>
+            </td>
+            <td>
+              <button id="btn6" value="6" onclick="setInput(this)">6</button>
+            </td>
+            <td>
+              <button id="btn*" value="*" onclick="calculate(this)">*</button>
+            </td>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr>
+            <td>
+              <button id="btn1" value="1" onclick="setInput(this)">1</button>
+            </td>
+            <td>
+              <button id="btn2" value="2" onclick="setInput(this)">2</button>
+            </td>
+            <td>
+              <button id="btn3" value="3" onclick="setInput(this)">3</button>
+            </td>
+            <td>
+              <button id="btn-" value="-" onclick="calculate(this)">-</button>
+            </td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td>
+              <button id="btnC" value="C" onclick="clearInput()">C</button>
+            </td>
+            <td>
+              <button id="btn0" value="0" onclick="setInput(this)">0</button>
+            </td>
+            <td>
+              <button id="btn." value="." onclick="setInput(this)">.</button>
+            </td>
+            <td>
+              <button id="btn+" value="+" onclick="calculate(this)">+</button>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+    </section>
+    <aside>
+      <h2>This is AD</h2>
+      <p>
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio, aut.
+      </p>
+    </aside>
+    <footer>
+      <h2>This is Footer</h2>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, vel.
+      </p>
+    </footer>
+    <script>
+      window.onload = () => {
+        var myScript = document.createElement("script");
+        myScript.src = "calculator.js";
+        document.body.appendChild(myScript);
+      };
+    </script>
+  </body>
+</html>
