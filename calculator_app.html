@@ -8,6 +8,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="calculator.css" rel="stylesheet" />
     <title>계산기</title>
+    <script>
+        function loadScript(script) {
+          let myScript = document.createElement("script");
+          myScript.src = script;
+          document.body.appendChild(myScript);
+        }
+        window.onload = () => {
+          loadScript("calculator.js");
+        };
+      </script>
   </head>
   <body>
     <table>
@@ -88,12 +98,5 @@
         </tr>
       </tfoot>
     </table>
-    <script>
-      window.onload = () => {
-        var myScript = document.createElement("script");
-        myScript.src = "calculator.js";
-        document.body.appendChild(myScript);
-      };
-    </script>
   </body>
 </html>

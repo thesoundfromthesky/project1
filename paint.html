@@ -5,18 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="Author" content="고기상추밥" />
     <meta name="Keywords" content="Project1" />
-    <meta name="Description" content="Main page" />
+    <meta name="Description" content="Paint page" />
     <title>Project1</title>
     <link href="index.css" rel="stylesheet" />
+    <link rel="stylesheet" href="paint.css" />
     <script>
       function loadScript(script) {
         let myScript = document.createElement("script");
         myScript.src = script;
         document.body.appendChild(myScript);
       }
-      window.onload = () => {          
+      window.onload = () => {
         loadScript("index.js");
-        loadScript("myCanvas.js");
+        loadScript("paint.js");
       };
     </script>
   </head>
@@ -29,42 +30,14 @@
     </header>
     <nav>
       <ul>
-        <li><a href="index.html" style="color:aquamarine">Home</a></li>
+        <li><a href="index.html">Home</a></li>
         <li><a href="calculator.html">Calculator</a></li>
-        <li><a href="paint.html">Paint</a></li>
+        <li><a href="paint.html" style="color:aquamarine">Paint</a></li>
         <li>This is Nav 4</li>
         <li>This is Nav 5</li>
       </ul>
     </nav>
-    <section>
-      <h2>This is Section</h2>
-      <canvas id="myCanvas" width="400" height="400"></canvas>
-    </section>
-    <section>
-      <h2>This is Section2</h2>
-      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam, ea!</p>
-      <article>
-        <h3>This is Article 1</h3>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos,
-          incidunt?
-        </p>
-      </article>
-      <article>
-        <h3>This is Article 2</h3>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci,
-          illo.
-        </p>
-      </article>
-      <article>
-        <h3>This is Article 3</h3>
-        <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque,
-          neque.
-        </p>
-      </article>
-    </section>
+    <section><canvas id="paint" width="300" height="300"></canvas></section>
     <aside>
       <h2>This is AD</h2>
       <p>

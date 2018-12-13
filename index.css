@@ -7,6 +7,9 @@ a {
   text-decoration: none;
   color: white;
 }
+a:hover {
+    color: aquamarine;
+}
 header,
 footer,
 aside {
@@ -28,6 +31,7 @@ nav ul li {
   display: inline;
   margin: 15px;
 }
+
 section {
   margin: 5px;
   padding: 50px;
@@ -39,6 +43,6 @@ article {
   background-color: white;
 }
 
-canvas {
+#myCanvas {
   border: 1px solid gray;
 }

@@ -91,6 +91,7 @@ function calculate(_operator){
 }
 
 document.body.addEventListener("keydown", (event) => {
+    debugger;
     let element = document.activeElement;
     if (element.id !== "input") {
         if (event.key === '+' || event.key === '-' ||

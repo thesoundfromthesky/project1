@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="Author" content="고기상추밥" />
+    <meta name="Keywords" content="그림판" />
+    <meta name="Description" content="그림판 입니다." />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="paint.css" rel="stylesheet" />
+    <title>그림판</title>
+    <script>
+        function loadScript(script) {
+          let myScript = document.createElement("script");
+          myScript.src = script;
+          document.body.appendChild(myScript);
+        }
+        window.onload = () => {
+          loadScript("paint.js");
+        };
+      </script>
+  </head>
+  <body>
+      <section><canvas id="paint" width="300" height="300"></canvas></section>
+  </body>
+</html>

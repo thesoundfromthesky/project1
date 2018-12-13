@@ -1,11 +1,12 @@
 "use strict";
 
-function getElement(selector) {
+function getElement(selector, getAll = false) {
+  if (getAll === true) return document.querySelectorAll(selector);
   return document.querySelector(selector);
 }
 
 function getCanvas2D() {
-  let c = document.querySelector("#myCanvas");
+  let c = getElement("#myCanvas");
   return c.getContext("2d");
 }
 

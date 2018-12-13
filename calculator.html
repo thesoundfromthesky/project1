@@ -3,12 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="index.css" rel="stylesheet" />
-    <link rel="stylesheet" href="calculator.css" />
     <meta name="Author" content="고기상추밥" />
     <meta name="Keywords" content="Project1" />
-    <meta name="Description" content="Main page" />
+    <meta name="Description" content="Calculator page" />
     <title>Project1</title>
+    <link href="index.css" rel="stylesheet" />
+    <link href="calculator.css" rel="stylesheet" />
+    <script>
+      function loadScript(script) {
+        let myScript = document.createElement("script");
+        myScript.src = script;
+        document.body.appendChild(myScript);
+      }
+      window.onload = () => {
+        loadScript("index.js");
+        loadScript("calculator.js");
+      };
+    </script>
   </head>
   <body>
     <header>
@@ -19,11 +30,9 @@
     </header>
     <nav>
       <ul>
-        <li><a href="index.html">Home</a></li>
-        <li>
-          <a href="calculator.html" style="color:aquamarine">Calculator</a>
-        </li>
-        <li>This is Nav 3</li>
+        <li><a href="index.html" >Home</a></li>
+        <li><a href="calculator.html" style="color:aquamarine">Calculator</a></li>
+        <li><a href="paint.html">Paint</a></li>
         <li>This is Nav 4</li>
         <li>This is Nav 5</li>
       </ul>
@@ -122,12 +131,5 @@
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, vel.
       </p>
     </footer>
-    <script>
-      window.onload = () => {
-        var myScript = document.createElement("script");
-        myScript.src = "calculator.js";
-        document.body.appendChild(myScript);
-      };
-    </script>
   </body>
 </html>
