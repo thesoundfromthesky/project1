@@ -30,7 +30,7 @@ class Paint {
   constructor() {
     this.point = new Point();
     this.drawable = false;
-    // this.ongoingTouches = [];
+    this.ongoingTouches = [];
     this.c = getElement("#paint");
     this.ctx = this.c.getContext("2d");
     this.init();
@@ -65,9 +65,8 @@ class Paint {
       case "touchstart":
         this.enableTouch(event);
         break;
-      case "touchmove":      
-        debugger;
-        if (this.drawable) this.drawTouch(event);
+      case "touchmove":  
+        this.drawTouch(event);
         break;
       case "touchend":
         this.disableTouch();
@@ -100,9 +99,8 @@ class Paint {
 
   enableTouch(event) {
     let touches = event.changedTouches;
-    this.drawable = true;
     for (let touch of touches) {
-      // this.ongoingTouches.push(this.copyTouch(touch));
+      this.ongoingTouches.push(this.copyTouch(touch));
       this.updateTouchPoint(touch);
       this.ctx.beginPath();
       this.ctx.moveTo(this.point.X, this.point.Y);
@@ -111,24 +109,38 @@ class Paint {
   }
 
   drawTouch(event) {
-    let touches = event.changedTouches;
-
+    let touches = event.changedTouches;    
+    let idx;
     for (let touch of touches) {
-      // let idx = ongoingTouches.findIndex(value => {
-      //   return value.identifier === touch.identifier;
-      // });
+      idx = this.ongoingTouches.findIndex((value) => {
+        return value.identifier === touch.identifier;
+      })
 
-      this.updateTouchPoint(touch);
-      this.ctx.lineTo(this.point.X, this.point.Y);
-      this.ctx.stroke();
-      // if(-1 < idx) {
+      if(-1 < idx) {
+        this.ctx.beginPath();
+        this.updateTouchPoint(this.ongoingTouches[idx]);
+        this.ctx.moveTo(this.point.X, this.point.Y);
+        this.updateTouchPoint(touch);
+        this.ctx.lineTo(this.point.X, this.point.Y);
+        this.ctx.stroke();
 
-      // }
+        this.ongoingTouches.splice(idx, 1, this.copyTouch(touch));
+      }
     }
   }
 
   disableTouch() {
-    this.drawable = false;
+    let touches = event.changedTouches;
+    let idx;
+    for(let touch of touches){
+      idx = this.ongoingTouches.findIndex((value) => {
+        return value.identifier === touch.identifier;
+      })
+
+      if(-1 < idx){
+        this.ongoingTouches.splice(idx, 1);
+      }
+    }
   }
 
   updatePoint(event) {
