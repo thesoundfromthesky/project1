@@ -30,22 +30,49 @@ class Paint {
   constructor() {
     this.point = new Point();
     this.drawable = false;
+    // this.ongoingTouches = [];
     this.c = getElement("#paint");
     this.ctx = this.c.getContext("2d");
     this.init();
   }
 
   init() {
-    this.c.addEventListener("mousedown", (event)=>{this.menu(event)});
-    this.c.addEventListener("mousemove", (event)=>{this.menu(event)});
-    this.c.addEventListener("mouseup", (event)=>{this.menu(event)});
-    this.c.addEventListener("mouseout", (event)=>{this.menu(event)});
+    this.c.addEventListener("touchstart", event => {
+      this.menu(event);
+    });
+    this.c.addEventListener("touchmove", event => {
+      this.menu(event);
+    });
+    this.c.addEventListener("touchend", event => {
+      this.menu(event);
+    });
+    this.c.addEventListener("mousedown", event => {
+      this.menu(event);
+    });
+    this.c.addEventListener("mousemove", event => {
+      this.menu(event);
+    });
+    this.c.addEventListener("mouseup", event => {
+      this.menu(event);
+    });
+    this.c.addEventListener("mouseout", event => {
+      this.menu(event);
+    });
   }
 
   menu(event) {
     switch (event.type) {
-      case "mousedown":
+      case "touchstart":
+        this.enableTouch(event);
+        break;
+      case "touchmove":      
         debugger;
+        if (this.drawable) this.drawTouch(event);
+        break;
+      case "touchend":
+        this.disableTouch();
+        break;
+      case "mousedown":
         this.enableDraw(event);
         break;
       case "mousemove":
@@ -56,6 +83,52 @@ class Paint {
         this.disableDraw();
         break;
     }
+  }
+
+  copyTouch(touch) {
+    return {
+      identifier: touch.identifier,
+      pageX: touch.pageX,
+      pageY: touch.pageY
+    };
+  }
+
+  updateTouchPoint(touch) {
+    this.point.X = touch.pageX - this.c.offsetLeft;
+    this.point.Y = touch.pageY - this.c.offsetTop;
+  }
+
+  enableTouch(event) {
+    let touches = event.changedTouches;
+    this.drawable = true;
+    for (let touch of touches) {
+      // this.ongoingTouches.push(this.copyTouch(touch));
+      this.updateTouchPoint(touch);
+      this.ctx.beginPath();
+      this.ctx.moveTo(this.point.X, this.point.Y);
+      this.ctx.stroke();
+    }
+  }
+
+  drawTouch(event) {
+    let touches = event.changedTouches;
+
+    for (let touch of touches) {
+      // let idx = ongoingTouches.findIndex(value => {
+      //   return value.identifier === touch.identifier;
+      // });
+
+      this.updateTouchPoint(touch);
+      this.ctx.lineTo(this.point.X, this.point.Y);
+      this.ctx.stroke();
+      // if(-1 < idx) {
+
+      // }
+    }
+  }
+
+  disableTouch() {
+    this.drawable = false;
   }
 
   updatePoint(event) {
